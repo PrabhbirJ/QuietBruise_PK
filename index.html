@@ -4,905 +4,1093 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Quiet Bruise — Press Kit</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Sour+Gummy:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0f0e0c;
-    --surface: #181614;
-    --border: #2a2622;
-    --orange: #ff6b2b;
-    --orange-dim: #c44d16;
-    --teal: #3d8a8f;
-    --teal-bright: #5bbec4;
-    --cream: #e8dfd0;
-    --muted: #7a7068;
-    --danger: #e03030;
-    --purple: #9b72cf;
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    background: var(--bg);
-    color: var(--cream);
-    font-family: 'Space Mono', monospace;
-    font-size: 14px;
-    line-height: 1.7;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  /* Noise overlay */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.4;
-  }
-
-  /* ── HEADER ── */
-  header {
-    position: relative;
-    padding: 80px 60px 60px;
-    border-bottom: 1px solid var(--border);
-    overflow: hidden;
-  }
-
-  header::after {
-    content: '';
-    position: absolute;
-    top: -60px; right: -60px;
-    width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(255,107,43,0.12) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .header-tag {
-    display: inline-block;
-    font-family: 'Space Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--orange);
-    border: 1px solid var(--orange-dim);
-    padding: 4px 12px;
-    margin-bottom: 24px;
-  }
-
-  header h1 {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(52px, 8vw, 100px);
-    font-weight: 800;
-    line-height: 0.9;
-    letter-spacing: -0.03em;
-    color: var(--cream);
-    margin-bottom: 8px;
-  }
-
-  header h1 span {
-    color: var(--orange);
-  }
-
-  .header-sub {
-    font-family: 'Space Mono', monospace;
-    font-size: 12px;
-    color: var(--muted);
-    letter-spacing: 0.08em;
-    margin-top: 20px;
-    margin-bottom: 32px;
-  }
-
-  .header-meta {
-    display: flex;
-    gap: 40px;
-    flex-wrap: wrap;
-  }
-
-  .meta-item {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .meta-label {
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--muted);
-  }
-
-  .meta-value {
-    font-size: 14px;
-    color: var(--cream);
-    font-weight: 700;
-  }
-
-  .meta-value a {
-    color: var(--teal-bright);
-    text-decoration: none;
-  }
-
-  .meta-value a:hover { color: var(--orange); }
-
-  /* ── LAYOUT ── */
-  .container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 60px;
-  }
-
-  section {
-    padding: 64px 60px;
-    border-bottom: 1px solid var(--border);
-    position: relative;
-  }
-
-  .section-label {
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: var(--orange);
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .section-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-
-  h2 {
-    font-family: 'Syne', sans-serif;
-    font-size: 32px;
-    font-weight: 800;
-    color: var(--cream);
-    margin-bottom: 24px;
-    line-height: 1.1;
-  }
-
-  p {
-    color: #b0a898;
-    max-width: 680px;
-    margin-bottom: 16px;
-  }
-
-  /* ── ABOUT ── */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    align-items: start;
-  }
-
-  .feature-list {
-    list-style: none;
-    margin-top: 32px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .feature-list li {
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
-  }
-
-  .feature-icon {
-    width: 32px;
-    height: 32px;
-    background: rgba(255,107,43,0.1);
-    border: 1px solid var(--orange-dim);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-
-  .feature-text strong {
-    display: block;
-    color: var(--cream);
-    font-size: 13px;
-    font-weight: 700;
-    margin-bottom: 4px;
-    font-family: 'Syne', sans-serif;
-  }
-
-  .feature-text span {
-    color: var(--muted);
-    font-size: 12px;
-    line-height: 1.6;
-  }
-
-  /* ── TAGS ── */
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 24px;
-  }
-
-  .tag {
-    font-size: 11px;
-    padding: 4px 12px;
-    border: 1px solid var(--border);
-    color: var(--muted);
-    letter-spacing: 0.05em;
-    transition: all 0.2s;
-  }
-
-  .tag:hover {
-    border-color: var(--teal);
-    color: var(--teal-bright);
-  }
-
-  /* ── SCREENSHOTS ── */
-  .screenshots-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    margin-top: 8px;
-  }
-
-  .screenshot-item {
-    position: relative;
-    overflow: hidden;
-    border: 1px solid var(--border);
-    background: var(--surface);
-    cursor: pointer;
-    
-  }
-
-  .screenshot-item img {
-    width: 100%;
-    display: block;
-    transition: transform 0.4s ease;
-  }
-
-  .screenshot-item:hover img {
-    transform: scale(1.03);
-  }
-
-  .screenshot-download {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    background: linear-gradient(transparent, rgba(0,0,0,0.85));
-    padding: 24px 16px 14px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    opacity: 0;
-    transition: opacity 0.2s;
-  }
-
-  .screenshot-item:hover .screenshot-download {
-    opacity: 1;
-  }
-
-  .screenshot-label {
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.05em;
-  }
-
-  .dl-btn-small {
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--orange);
-    text-decoration: none;
-    border: 1px solid var(--orange-dim);
-    padding: 4px 10px;
-    transition: all 0.2s;
-  }
-
-  .dl-btn-small:hover {
-    background: var(--orange);
-    color: #000;
-  }
-
-  /* ── DOWNLOAD CARDS ── */
-  .download-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 16px;
-    margin-top: 8px;
-  }
-
-  .download-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    transition: border-color 0.2s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .download-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: var(--orange);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s ease;
-  }
-
-  .download-card:hover::before { transform: scaleX(1); }
-  .download-card:hover { border-color: #3a3530; }
-
-  .card-icon {
-    font-size: 24px;
-    line-height: 1;
-  }
-
-  .card-name {
-    font-family: 'Syne', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--cream);
-  }
-
-  .card-desc {
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.6;
-    flex: 1;
-  }
-
-  .dl-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: transparent;
-    border: 1px solid var(--orange-dim);
-    color: var(--orange);
-    font-family: 'Space Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 10px 16px;
-    text-decoration: none;
-    cursor: pointer;
-    transition: all 0.2s;
-    width: 100%;
-    justify-content: center;
-  }
-
-  .dl-btn:hover {
-    background: var(--orange);
-    color: #000;
-    border-color: var(--orange);
-  }
-
-  .dl-btn svg {
-    width: 14px;
-    height: 14px;
-  }
-
-  /* ── FACT SHEET ── */
-  .fact-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 8px;
-  }
-
-  .fact-table tr {
-    border-bottom: 1px solid var(--border);
-  }
-
-  .fact-table tr:last-child { border-bottom: none; }
-
-  .fact-table td {
-    padding: 14px 0;
-    vertical-align: top;
-    font-size: 13px;
-  }
-
-  .fact-table td:first-child {
-    color: var(--muted);
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    width: 180px;
-    padding-right: 24px;
-    padding-top: 16px;
-  }
-
-  .fact-table td:last-child {
-    color: var(--cream);
-  }
-
-  /* ── SYSREQ ── */
-  .sysreq-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-    margin-top: 8px;
-  }
-
-  .sysreq-block {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 28px;
-  }
-
-  .sysreq-block h3 {
-    font-family: 'Syne', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--orange);
-    margin-bottom: 20px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-
-  .sysreq-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 12px;
-    gap: 16px;
-  }
-
-  .sysreq-row:last-child { border-bottom: none; }
-
-  .sysreq-row span:first-child {
-    color: var(--muted);
-    flex-shrink: 0;
-  }
-
-  .sysreq-row span:last-child {
-    color: var(--cream);
-    text-align: right;
-  }
-
-  /* ── SOCIAL LINKS ── */
-  .social-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 8px;
-  }
-
-  .social-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    border: 1px solid var(--border);
-    color: var(--cream);
-    text-decoration: none;
-    font-size: 12px;
-    padding: 12px 20px;
-    letter-spacing: 0.05em;
-    transition: all 0.2s;
-  }
-
-  .social-link:hover {
-    border-color: var(--teal);
-    color: var(--teal-bright);
-  }
-
-  /* ── CONTACT ── */
-  .contact-block {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 32px;
-    flex-wrap: wrap;
-  }
-
-  .contact-block h3 {
-    font-family: 'Syne', sans-serif;
-    font-size: 24px;
-    font-weight: 800;
-    color: var(--cream);
-    margin-bottom: 8px;
-  }
-
-  .contact-block p {
-    font-size: 13px;
-    color: var(--muted);
-    max-width: 400px;
-    margin: 0;
-  }
-
-  .contact-email {
-    font-family: 'Syne', sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--orange);
-    text-decoration: none;
-  }
-
-  .contact-email:hover { color: var(--cream); }
-
-  /* ── FOOTER ── */
-  footer {
-    padding: 40px 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-
-  footer span {
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.05em;
-  }
-
-  .steam-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: var(--orange);
-    color: #000;
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 13px;
-    padding: 12px 24px;
-    text-decoration: none;
-    letter-spacing: 0.03em;
-    transition: background 0.2s;
-  }
-
-  .steam-btn:hover { background: var(--cream); }
-
-  /* ── PLACEHOLDER IMAGE ── */
-  .img-placeholder {
-    width: 100%;
-    aspect-ratio: 16/9;
-    background: var(--surface);
-    border: 1px dashed var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--muted);
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 768px) {
-    header, section, footer { padding-left: 24px; padding-right: 24px; }
-    .about-grid, .sysreq-grid, .screenshots-grid { grid-template-columns: 1fr; }
-    .contact-block { flex-direction: column; align-items: flex-start; }
-    header h1 { font-size: 48px; }
-  }
-
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  header { animation: fadeUp 0.6s ease both; }
-  section { animation: fadeUp 0.6s ease both; }
+:root {
+  --grass: #4a9e78;
+  --grass-dark: #3a7d5e;
+  --grass-light: #5bbf8f;
+  --cream: #f5ecd4;
+  --parchment: #e8d5a3;
+  --ink: #2c1a0e;
+  --ink-light: #5a3a20;
+  --orange: #ff6b35;
+  --red: #e84040;
+  --night: #2a2a2a;
+  --white: #ffffff;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--grass);
+  background-image: 
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.15'/%3E%3C/svg%3E");
+  color: var(--ink);
+  font-family: 'Sour Gummy', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── TORN PAPER PANEL ── */
+.paper {
+  background: var(--cream);
+  position: relative;
+  border-radius: 2px;
+}
+
+.paper::before {
+  content: '';
+  position: absolute;
+  top: -8px; left: 0; right: 0;
+  height: 16px;
+  background: var(--cream);
+  clip-path: polygon(0% 100%, 2% 30%, 4% 80%, 6% 20%, 8% 70%, 10% 10%, 12% 60%, 14% 30%, 16% 80%, 18% 15%, 20% 65%, 22% 35%, 24% 75%, 26% 20%, 28% 60%, 30% 85%, 32% 25%, 34% 70%, 36% 40%, 38% 85%, 40% 20%, 42% 65%, 44% 30%, 46% 75%, 48% 10%, 50% 55%, 52% 85%, 54% 25%, 56% 70%, 58% 35%, 60% 80%, 62% 15%, 64% 60%, 66% 30%, 68% 75%, 70% 20%, 72% 65%, 74% 40%, 76% 80%, 78% 15%, 80% 60%, 82% 85%, 84% 25%, 86% 70%, 88% 35%, 90% 80%, 92% 15%, 94% 55%, 96% 30%, 98% 70%, 100% 100%);
+}
+
+.paper::after {
+  content: '';
+  position: absolute;
+  bottom: -8px; left: 0; right: 0;
+  height: 16px;
+  background: var(--cream);
+  clip-path: polygon(0% 0%, 2% 70%, 4% 20%, 6% 80%, 8% 30%, 10% 90%, 12% 40%, 14% 70%, 16% 20%, 18% 85%, 20% 35%, 22% 65%, 24% 25%, 26% 80%, 28% 40%, 30% 15%, 32% 75%, 34% 30%, 36% 60%, 38% 15%, 40% 80%, 42% 35%, 44% 70%, 46% 25%, 48% 90%, 50% 45%, 52% 15%, 54% 75%, 56% 30%, 58% 65%, 60% 20%, 62% 85%, 64% 40%, 66% 70%, 68% 25%, 70% 80%, 72% 35%, 74% 60%, 76% 20%, 78% 85%, 80% 40%, 82% 15%, 84% 75%, 86% 30%, 88% 65%, 90% 20%, 92% 85%, 94% 45%, 96% 70%, 98% 30%, 100% 0%);
+}
+
+/* ── HEADER ── */
+header {
+  padding: 60px 60px 80px;
+  text-align: center;
+  position: relative;
+}
+
+.header-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.press-badge {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--cream);
+  font-family: 'Sour Gummy', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 6px 18px;
+  margin-bottom: 24px;
+  transform: rotate(-1deg);
+}
+
+.game-title {
+  font-family: 'Lilita One', cursive;
+  font-size: clamp(72px, 12vw, 140px);
+  line-height: 0.85;
+  color: var(--cream);
+  text-shadow: 
+    4px 4px 0px var(--ink),
+    -2px -2px 0px rgba(0,0,0,0.2);
+  margin-bottom: 16px;
+  display: inline-block;
+  transform: rotate(-1deg);
+}
+
+.tagline {
+  font-family: 'Sour Gummy', sans-serif;
+  font-size: 16px;
+  color: var(--cream);
+  opacity: 0.85;
+  font-style: italic;
+  margin-bottom: 32px;
+}
+
+.tagline em {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 2px 8px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.header-meta-row {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.meta-pill {
+  background: rgba(0,0,0,0.25);
+  color: var(--cream);
+  padding: 8px 20px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 0;
+  letter-spacing: 0.05em;
+}
+
+.meta-pill span {
+  opacity: 0.6;
+  font-weight: 400;
+  margin-right: 6px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ── PLUSHIES SECTION ── */
+.plushies-section {
+  padding: 0 40px 80px;
+}
+
+.section-heading {
+  font-family: 'Lilita One', cursive;
+  font-size: clamp(36px, 5vw, 56px);
+  color: var(--cream);
+  text-shadow: 3px 3px 0px var(--ink);
+  text-align: center;
+  margin-bottom: 48px;
+  transform: rotate(-0.5deg);
+  display: inline-block;
+  width: 100%;
+}
+
+.plushies-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.plushie-card {
+  padding: 32px 24px 28px;
+  text-align: center;
+  position: relative;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  cursor: default;
+  transition: transform 0.3s ease;
+}
+
+.plushie-card:hover {
+  transform: translateY(-8px) rotate(1deg);
+}
+
+.plushie-card:nth-child(2) { transform: rotate(-1.5deg); }
+.plushie-card:nth-child(2):hover { transform: translateY(-8px) rotate(-0.5deg); }
+.plushie-card:nth-child(4) { transform: rotate(1deg); }
+.plushie-card:nth-child(4):hover { transform: translateY(-8px) rotate(2deg); }
+
+.plushie-sprite {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 16px;
+  position: relative;
+  animation: wobble 3s ease-in-out infinite;
+}
+
+.plushie-card:nth-child(2) .plushie-sprite { animation-delay: 0.4s; }
+.plushie-card:nth-child(3) .plushie-sprite { animation-delay: 0.8s; }
+.plushie-card:nth-child(4) .plushie-sprite { animation-delay: 1.2s; }
+
+@keyframes wobble {
+  0%, 100% { transform: rotate(-3deg) translateY(0); }
+  25% { transform: rotate(3deg) translateY(-4px); }
+  50% { transform: rotate(-2deg) translateY(-2px); }
+  75% { transform: rotate(2deg) translateY(-5px); }
+}
+
+.plushie-emoji {
+  font-size: 72px;
+  display: block;
+  line-height: 1;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+}
+
+/* Replace emoji with actual sprite */
+.plushie-img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+}
+
+.plushie-name {
+  font-family: 'Lilita One', cursive;
+  font-size: 22px;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.plushie-role {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--ink-light);
+  margin-bottom: 10px;
+  opacity: 0.7;
+}
+
+.plushie-desc {
+  font-size: 12px;
+  color: var(--ink-light);
+  line-height: 1.6;
+}
+
+.plushie-dl {
+  margin-top: 16px;
+  display: inline-block;
+  background: var(--ink);
+  color: var(--cream);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.plushie-dl:hover {
+  background: var(--orange);
+}
+
+/* ── ABOUT SECTION ── */
+.about-section {
+  padding: 0 40px 80px;
+}
+
+.about-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.about-title {
+  font-family: 'Lilita One', cursive;
+  font-size: 32px;
+  color: var(--ink);
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.about-text {
+  font-size: 14px;
+  color: var(--ink-light);
+  margin-bottom: 14px;
+  max-width: none;
+}
+
+.about-text strong {
+  color: var(--ink);
+}
+
+.feature-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.feature-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px;
+  background: rgba(44, 26, 14, 0.06);
+  border-left: 3px solid var(--ink);
+}
+
+.feature-item .icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.feature-item strong {
+  display: block;
+  font-family: 'Lilita One', cursive;
+  font-size: 14px;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+
+.feature-item span {
+  font-size: 12px;
+  color: var(--ink-light);
+  line-height: 1.5;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.tag {
+  background: var(--ink);
+  color: var(--cream);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+}
+
+/* ── SCREENSHOTS ── */
+.screenshots-section {
+  padding: 0 40px 80px;
+}
+
+.screenshots-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px;
+}
+
+.screenshots-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.screenshot-item {
+  position: relative;
+  overflow: hidden;
+  border: 3px solid var(--ink);
+  cursor: pointer;
+}
+
+.screenshot-item img,
+.screenshot-placeholder {
+  width: 100%;
+  aspect-ratio: 16/9;
+  display: block;
+  transition: transform 0.4s ease;
+  object-fit: cover;
+}
+
+.screenshot-placeholder {
+  background: var(--grass-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.4);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.screenshot-item:hover img {
+  transform: scale(1.04);
+}
+
+.screenshot-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.9));
+  padding: 24px 14px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.screenshot-item:hover .screenshot-overlay {
+  opacity: 1;
+}
+
+.screenshot-label {
+  font-size: 10px;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.05em;
+}
+
+.dl-small {
+  background: var(--orange);
+  color: var(--ink);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.dl-small:hover { background: var(--cream); }
+
+/* ── DOWNLOADS ── */
+.downloads-section {
+  padding: 0 40px 80px;
+}
+
+.downloads-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px;
+}
+
+.downloads-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.dl-card {
+  background: var(--grass);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.15'/%3E%3C/svg%3E");
+  border: 3px solid var(--ink);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 0.2s;
+}
+
+.dl-card:hover { transform: translateY(-4px) rotate(0.5deg); }
+
+.dl-card-icon { font-size: 28px; }
+
+.dl-card-name {
+  font-family: 'Lilita One', cursive;
+  font-size: 18px;
+  color: var(--cream);
+}
+
+.dl-card-desc {
+  font-size: 11px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.dl-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Sour Gummy', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 10px 16px;
+  text-decoration: none;
+  transition: all 0.2s;
+  border: 2px solid var(--ink);
+}
+
+.dl-btn:hover {
+  background: var(--orange);
+  color: var(--ink);
+}
+
+/* ── FACT SHEET ── */
+.facts-section {
+  padding: 0 40px 80px;
+}
+
+.facts-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px;
+}
+
+.fact-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.fact-table tr {
+  border-bottom: 2px solid rgba(44,26,14,0.15);
+}
+
+.fact-table tr:last-child { border-bottom: none; }
+
+.fact-table td {
+  padding: 14px 0;
+  vertical-align: top;
+  font-size: 13px;
+}
+
+.fact-table td:first-child {
+  color: var(--ink-light);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  width: 180px;
+  padding-right: 24px;
+  padding-top: 17px;
+  font-weight: 700;
+  opacity: 0.7;
+}
+
+.fact-table td:last-child { color: var(--ink); font-weight: 600; }
+
+.fact-table a {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+/* ── CONTACT ── */
+.contact-section {
+  padding: 0 40px 100px;
+}
+
+.contact-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px;
+  text-align: center;
+}
+
+.contact-inner .section-heading {
+  margin-bottom: 16px;
+}
+
+.contact-sub {
+  font-size: 14px;
+  color: var(--ink-light);
+  margin-bottom: 32px;
+}
+
+.contact-email {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--cream);
+  font-family: 'Lilita One', cursive;
+  font-size: 24px;
+  padding: 16px 40px;
+  text-decoration: none;
+  transition: all 0.2s;
+  transform: rotate(-0.5deg);
+}
+
+.contact-email:hover {
+  background: var(--orange);
+  color: var(--ink);
+  transform: rotate(0.5deg) scale(1.02);
+}
+
+.social-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0,0,0,0.2);
+  color: var(--cream);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 10px 20px;
+  text-decoration: none;
+  border: 2px solid rgba(255,255,255,0.2);
+  transition: all 0.2s;
+  letter-spacing: 0.05em;
+}
+
+.social-link:hover {
+  background: var(--cream);
+  color: var(--ink);
+  border-color: var(--cream);
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 32px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+footer span {
+  font-size: 11px;
+  opacity: 0.5;
+  letter-spacing: 0.05em;
+}
+
+.wishlist-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--orange);
+  color: var(--ink);
+  font-family: 'Lilita One', cursive;
+  font-size: 16px;
+  padding: 12px 28px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.wishlist-btn:hover {
+  background: var(--cream);
+  transform: scale(1.03);
+}
+
+/* ── SECTION LABEL ── */
+.section-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--ink-light);
+  opacity: 0.6;
+  margin-bottom: 12px;
+}
+
+/* ── PAPER HEADING ── */
+.paper-heading {
+  font-family: 'Lilita One', cursive;
+  font-size: 28px;
+  color: var(--ink);
+  margin-bottom: 24px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .plushies-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-grid { grid-template-columns: 1fr; }
+  .downloads-grid { grid-template-columns: repeat(2, 1fr); }
+  .screenshots-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  header, .plushies-section, .about-section, .screenshots-section, .downloads-section, .facts-section, .contact-section { padding-left: 20px; padding-right: 20px; }
+  .plushies-grid { grid-template-columns: repeat(2, 1fr); }
+  .downloads-grid { grid-template-columns: 1fr; }
+  .about-inner, .screenshots-inner, .downloads-inner, .facts-inner, .contact-inner { padding: 32px 24px; }
+  footer { padding: 24px; flex-direction: column; text-align: center; }
+}
+
+/* ── ENTRANCE ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.game-title { animation: fadeUp 0.6s ease both; }
+.tagline { animation: fadeUp 0.6s ease 0.1s both; }
+.header-meta-row { animation: fadeUp 0.6s ease 0.2s both; }
+.plushie-card:nth-child(1) { animation: fadeUp 0.5s ease 0.1s both; }
+.plushie-card:nth-child(2) { animation: fadeUp 0.5s ease 0.2s both; }
+.plushie-card:nth-child(3) { animation: fadeUp 0.5s ease 0.3s both; }
+.plushie-card:nth-child(4) { animation: fadeUp 0.5s ease 0.4s both; }
+
+/* ── STRESS EGG EASTER EGG ── */
+.easter-egg {
+  position: fixed;
+  font-size: 32px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 999;
+}
+
 </style>
 </head>
 <body>
 
+<!-- HERO GIF -->
+<div style="display:flex;justify-content:center;padding:40px 40px 0;background:var(--grass);">
+  <div style="position:relative;border:4px solid var(--ink);max-width:616px;width:100%;">
+    <img src="DROPBOX_HERO_GIF" alt="Quiet Bruise — chaos in action" style="width:100%;display:block;" />
+    <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.7);padding:8px 14px;display:flex;justify-content:space-between;align-items:center;">
+      <span style="font-size:11px;color:rgba(255,255,255,0.6);letter-spacing:0.05em;">this is fine.</span>
+      <a href="DROPBOX_HERO_GIF" download style="background:var(--orange);color:var(--ink);font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:5px 12px;text-decoration:none;">↓ Download GIF</a>
+    </div>
+  </div>
+</div>
+
 <!-- HEADER -->
 <header>
-  <div class="header-tag">Press Kit</div>
-  <h1>Quiet<br><span>Bruise</span></h1>
-  <p class="header-sub">GiantRiotous · Indie / Simulation / Strategy · Aug 12, 2026</p>
-  <div class="header-meta">
-    <div class="meta-item">
-      <span class="meta-label">Developer</span>
-      <span class="meta-value">GiantRiotous</span>
-    </div>
-    <div class="meta-item">
-      <span class="meta-label">Publisher</span>
-      <span class="meta-value">GiantRiotous</span>
-    </div>
-    <div class="meta-item">
-      <span class="meta-label">Release Date</span>
-      <span class="meta-value">Aug 12, 2026</span>
-    </div>
-    <div class="meta-item">
-      <span class="meta-label">Platform</span>
-      <span class="meta-value">PC (Windows)</span>
-    </div>
-    <div class="meta-item">
-      <span class="meta-label">Steam Page</span>
-      <span class="meta-value"><a href="https://store.steampowered.com/app/4276440/Quiet_Bruise/" target="_blank">store.steampowered.com ↗</a></span>
+  <div class="header-inner">
+    <div class="press-badge">🧸 Press Kit</div>
+    <div class="game-title">Quiet Bruise</div>
+    <p class="tagline">
+      <em>"we were supposed to run a factory."</em>
+      &nbsp;
+      <em>"we did not run the factory very well."</em>
+    </p>
+    <div class="header-meta-row">
+      <div class="meta-pill"><span>Developer</span>GiantRiotous</div>
+      <div class="meta-pill"><span>Platform</span>PC (Windows)</div>
+      <div class="meta-pill"><span>Release</span>Aug 12, 2026</div>
+      <div class="meta-pill"><span>Genre</span>Chaotic Factory Survival</div>
+      <div class="meta-pill"><span>Price</span>$10</div>
     </div>
   </div>
 </header>
 
-<!-- ABOUT -->
-<section>
-  <div class="section-label">About the Game</div>
-  <div class="about-grid">
-    <div>
-      <h2>A factory game where everything is trying to kill you. Including your team.</h2>
-      <p>Quiet Bruise is a chaotic factory survival game where dumb plushies build unstable production lines, fight ghost raids and somehow keep the whole thing from collapsing.</p>
-      <p>Machines catch fire, ghosts tear through production lines and your plushies barely know what they're doing. Build new machines, reroute broken systems, survive the night and pay off just enough debt to do it all again.</p>
-      <p>Every machine sounds wrong. Every plushie has terrible ideas. Keep it running anyway.</p>
-      <div class="tags">
-        <span class="tag">Simulation</span>
-        <span class="tag">Strategy</span>
-        <span class="tag">Roguelite</span>
-        <span class="tag">Card Game</span>
-        <span class="tag">Survival</span>
-        <span class="tag">Economy</span>
-        <span class="tag">2D</span>
-        <span class="tag">Hand-drawn</span>
-        <span class="tag">Dark Humor</span>
-        <span class="tag">Base Building</span>
-        <span class="tag">Indie</span>
+<!-- MEET YO PLUSHIES -->
+<section class="plushies-section">
+  <div class="section-heading">meet yo plushies.</div>
+  <div class="plushies-grid">
+
+    <!-- BASIL -->
+    <div class="plushie-card paper">
+      <div class="plushie-sprite">
+        <!-- Replace src with real sprite URL after uploading -->
+        <span class="plushie-emoji">🌿</span>
       </div>
+      <div class="plushie-name">Basil</div>
+      <div class="plushie-role">The Healer (allegedly)</div>
+      <div class="plushie-desc">Supposed to heal his friends. Heals the wrong one. Every time. Currently standing in fire and doesn't seem to notice.</div>
+      <a href="DROPBOX_BASIL_SPRITE" class="plushie-dl" download>↓ Download Sprite</a>
     </div>
-    <div>
-      <ul class="feature-list">
-        <li>
-          <div class="feature-icon">👻</div>
-          <div class="feature-text">
-            <strong>Hold Off The Horde</strong>
-            <span>Ghosts don't care about your factory. You and your dumb plushies are all that's standing between a raid and total collapse.</span>
-          </div>
-        </li>
-        <li>
-          <div class="feature-icon">🔥</div>
-          <div class="feature-text">
-            <strong>Cause Terrible Accidents</strong>
-            <span>One wrong move and half your factory is on fire. Sometimes blowing things up is the only way out.</span>
-          </div>
-        </li>
-        <li>
-          <div class="feature-icon">🧸</div>
-          <div class="feature-text">
-            <strong>Control Complete Idiots</strong>
-            <span>Your plushies panic, wander into danger and somehow make every disaster worse.</span>
-          </div>
-        </li>
-        <li>
-          <div class="feature-icon">⚙️</div>
-          <div class="feature-text">
-            <strong>Keep The Mess Alive</strong>
-            <span>Expand your factory, survive another night and somehow keep the whole beautiful disaster running.</span>
-          </div>
-        </li>
-      </ul>
+
+    <!-- BRUNO -->
+    <div class="plushie-card paper">
+      <div class="plushie-sprite">
+        <span class="plushie-emoji">🐻</span>
+      </div>
+      <div class="plushie-name">Bruno</div>
+      <div class="plushie-role">The Tank (mostly)</div>
+      <div class="plushie-desc">Walks directly into danger. On purpose. Has never dodged anything in his life. The factory is on fire. He's fine. Probably.</div>
+      <a href="DROPBOX_BRUNO_SPRITE" class="plushie-dl" download>↓ Download Sprite</a>
+    </div>
+
+    <!-- REX -->
+    <div class="plushie-card paper">
+      <div class="plushie-sprite">
+        <span class="plushie-emoji">🦕</span>
+      </div>
+      <div class="plushie-name">Rex</div>
+      <div class="plushie-role">The Attacker (sort of)</div>
+      <div class="plushie-desc">Hits everything. Enemies. Machines. Friends. The factory wall. Himself once. Rex does not discriminate. Rex is a liability.</div>
+      <a href="DROPBOX_REX_SPRITE" class="plushie-dl" download>↓ Download Sprite</a>
+    </div>
+
+    <!-- DUKE -->
+    <div class="plushie-card paper">
+      <div class="plushie-sprite">
+        <span class="plushie-emoji">👑</span>
+      </div>
+      <div class="plushie-name">Duke</div>
+      <div class="plushie-role">The King (self-declared)</div>
+      <div class="plushie-desc">Wears a crown. Gives orders nobody asked for. Buffs the wrong plushie at the wrong moment. Somehow still thinks he's in charge.</div>
+      <a href="DROPBOX_DUKE_SPRITE" class="plushie-dl" download>↓ Download Sprite</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section">
+  <div class="about-inner paper">
+    <div class="about-grid">
+      <div>
+        <div class="section-label">About the Game</div>
+        <div class="about-title">A factory game where everything is trying to destroy it. Including the people running it.</div>
+        <p class="about-text">Connect some belts, sell the output. Easy.</p>
+        <p class="about-text">Then the raids started. A plushie shot a machine. The machine caught fire. Someone laid an egg in the middle of the factory. You fix what you can. You pay what you owe. You do it again.</p>
+        <p class="about-text"><strong>Quiet Bruise</strong> is a chaotic factory survival roguelite. Build production lines, fight off raids, throw your teammates at enemies, and try not to destroy everything yourself.</p>
+        <p class="about-text">You will destroy everything yourself.</p>
+        <div class="tags">
+          <span class="tag">Roguelite</span>
+          <span class="tag">Factory</span>
+          <span class="tag">Survival</span>
+          <span class="tag">Chaos</span>
+          <span class="tag">Plushies</span>
+          <span class="tag">2D</span>
+          <span class="tag">Indie</span>
+          <span class="tag">Singleplayer</span>
+        </div>
+      </div>
+      <div>
+        <ul class="feature-list">
+          <li class="feature-item">
+            <span class="icon">🥚</span>
+            <div>
+              <strong>Stress Them Out Enough</strong>
+              <span>Plushies lay eggs under stress. Eggs hatch into chaotic offspring. Throw them at enemies. Results vary wildly.</span>
+            </div>
+          </li>
+          <li class="feature-item">
+            <span class="icon">🌀</span>
+            <div>
+              <strong>Pick Up. Spin. Release.</strong>
+              <span>Hook enemies or teammates with a flail. Spin them. Launch them into the factory. Regret it immediately.</span>
+            </div>
+          </li>
+          <li class="feature-item">
+            <span class="icon">🔥</span>
+            <div>
+              <strong>Cause Terrible Accidents</strong>
+              <span>One wrong shot and your factory is on fire. Sometimes that's the strategy. Usually it isn't.</span>
+            </div>
+          </li>
+          <li class="feature-item">
+            <span class="icon">⛵</span>
+            <div>
+              <strong>Pay The Debt. Or Don't.</strong>
+              <span>A boat arrives every 90 seconds. Debt compounds every 110. Do the math. Then panic.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- SCREENSHOTS -->
-<section>
-  <div class="section-label">Screenshots</div>
-  <h2>Screenshots & Media</h2>
-  <p>Click any image to download. Add your Dropbox links directly to the <code>href</code> attributes below.</p>
+<section class="screenshots-section">
+  <div class="section-heading">screenshots.</div>
+  <div class="screenshots-inner paper">
+    <!-- TRAILER -->
+    <div class="section-label">Trailer</div>
+    <div style="margin-bottom:32px;">
+      <a href="https://www.youtube.com/@GiantRiotous" target="_blank" style="display:flex;align-items:center;gap:16px;background:var(--ink);color:var(--cream);padding:20px 24px;text-decoration:none;max-width:400px;transition:background 0.2s;" onmouseover="this.style.background='#ff6b35'" onmouseout="this.style.background='#2c1a0e'">
+        <span style="font-size:28px;">▶</span>
+        <div>
+          <div style="font-family:'Lilita One',cursive;font-size:18px;">Watch Trailer</div>
+          <div style="font-size:11px;opacity:0.6;letter-spacing:0.05em;">YouTube — Official Gameplay Trailer</div>
+        </div>
+      </a>
+    </div>
 
-  <div class="screenshots-grid">
-    <div class="screenshot-item">
-      <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4276440/98a5c8319be9f69ccb39a229ec199c9d2d13bfe6/ss_98a5c8319be9f69ccb39a229ec199c9d2d13bfe6.1920x1080.jpg?t=1779024882" alt="Screenshot 1" loading="lazy">
-      <div class="screenshot-download">
-        <span class="screenshot-label">Screenshot 01 · 1920×1080</span>
-        <a href="DROPBOX_LINK_1" class="dl-btn-small" download>↓ Download</a>
+    <!-- GIFS -->
+    <div class="section-label">GIFs — hover to download</div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:40px;">
+
+      <div class="screenshot-item">
+        <img src="DROPBOX_GIF_1" alt="GIF 01" loading="lazy" style="width:100%;display:block;">
+        <div class="screenshot-overlay">
+          <span class="screenshot-label">GIF 01 · 616px</span>
+          <a href="DROPBOX_GIF_1" class="dl-small" download>↓ GIF</a>
+        </div>
       </div>
+
+      <div class="screenshot-item">
+        <img src="DROPBOX_GIF_2" alt="GIF 02" loading="lazy" style="width:100%;display:block;">
+        <div class="screenshot-overlay">
+          <span class="screenshot-label">GIF 02 · 616px</span>
+          <a href="DROPBOX_GIF_2" class="dl-small" download>↓ GIF</a>
+        </div>
+      </div>
+
+      <div class="screenshot-item">
+        <img src="DROPBOX_GIF_3" alt="GIF 03" loading="lazy" style="width:100%;display:block;">
+        <div class="screenshot-overlay">
+          <span class="screenshot-label">GIF 03 · 616px</span>
+          <a href="DROPBOX_GIF_3" class="dl-small" download>↓ GIF</a>
+        </div>
+      </div>
+
+      <div class="screenshot-item">
+        <img src="DROPBOX_GIF_4" alt="GIF 04" loading="lazy" style="width:100%;display:block;">
+        <div class="screenshot-overlay">
+          <span class="screenshot-label">GIF 04 · 616px</span>
+          <a href="DROPBOX_GIF_4" class="dl-small" download>↓ GIF</a>
+        </div>
+      </div>
+
     </div>
-    <div class="screenshot-item">
-      <div class="img-placeholder">Screenshot 02 — Add Dropbox link</div>
-      <div class="screenshot-download">
-        <span class="screenshot-label">Screenshot 02 · 1920×1080</span>
-        <a href="DROPBOX_LINK_2" class="dl-btn-small" download>↓ Download</a>
+
+    <!-- SCREENSHOTS -->
+    <div class="section-label">Screenshots — hover to download</div>
+    <div class="screenshots-grid">
+
+      <div class="screenshot-item">
+        <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4276440/98a5c8319be9f69ccb39a229ec199c9d2d13bfe6/ss_98a5c8319be9f69ccb39a229ec199c9d2d13bfe6.1920x1080.jpg?t=1779024882" alt="Screenshot 01" loading="lazy">
+        <div class="screenshot-overlay">
+          <span class="screenshot-label">Screenshot 01 · 2560×1440</span>
+          <a href="DROPBOX_SS1" class="dl-small" download>↓ PNG</a>
+        </div>
       </div>
-    </div>
-    <div class="screenshot-item">
-      <div class="img-placeholder">Screenshot 03 — Add Dropbox link</div>
-      <div class="screenshot-download">
-        <span class="screenshot-label">Screenshot 03 · 1920×1080</span>
-        <a href="DROPBOX_LINK_3" class="dl-btn-small" download>↓ Download</a>
+
+      <div class="screenshot-item">
+        <div class="screenshot-placeholder">Screenshot 02 — Add Dropbox link</div>
+        <div class="screenshot-overlay">
+          <span class="screenshot-label">Screenshot 02 · 2560×1440</span>
+          <a href="DROPBOX_SS2" class="dl-small" download>↓ PNG</a>
+        </div>
       </div>
-    </div>
-    <div class="screenshot-item">
-      <div class="img-placeholder">Screenshot 04 — Add Dropbox link</div>
-      <div class="screenshot-download">
-        <span class="screenshot-label">Screenshot 04 · 1920×1080</span>
-        <a href="DROPBOX_LINK_4" class="dl-btn-small" download>↓ Download</a>
+
+      <div class="screenshot-item">
+        <div class="screenshot-placeholder">Screenshot 03 — Add Dropbox link</div>
+        <div class="screenshot-overlay">
+          <span class="screenshot-label">Screenshot 03 · 2560×1440</span>
+          <a href="DROPBOX_SS3" class="dl-small" download>↓ PNG</a>
+        </div>
       </div>
+
+      <div class="screenshot-item">
+        <div class="screenshot-placeholder">Screenshot 04 — Add Dropbox link</div>
+        <div class="screenshot-overlay">
+          <span class="screenshot-label">Screenshot 04 · 2560×1440</span>
+          <a href="DROPBOX_SS4" class="dl-small" download>↓ PNG</a>
+        </div>
+      </div>
+
+      <div class="screenshot-item">
+        <div class="screenshot-placeholder">Screenshot 05 — Add Dropbox link</div>
+        <div class="screenshot-overlay">
+          <span class="screenshot-label">Screenshot 05 · 2560×1440</span>
+          <a href="DROPBOX_SS5" class="dl-small" download>↓ PNG</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
 <!-- DOWNLOADS -->
-<section>
-  <div class="section-label">Assets</div>
-  <h2>Download Assets</h2>
-  <p>All assets are free to use for press coverage. Replace placeholder links with your Dropbox direct download URLs.</p>
+<section class="downloads-section">
+  <div class="section-heading">grab everything.</div>
+  <div class="downloads-inner paper">
+    <div class="section-label">All assets free to use for press coverage</div>
+    <div class="downloads-grid">
 
-  <div class="download-grid">
-    <div class="download-card">
-      <div class="card-icon">🎮</div>
-      <div class="card-name">Capsule Art</div>
-      <div class="card-desc">Steam capsule image. 616×353px JPG. Primary promotional artwork.</div>
-      <a href="DROPBOX_CAPSULE_LINK" class="dl-btn" download>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-        Download
-      </a>
-    </div>
+      <div class="dl-card">
+        <div class="dl-card-icon">🎬</div>
+        <div class="dl-card-name">Trailer</div>
+        <div class="dl-card-desc">Official gameplay trailer. 30 seconds of things going very wrong. YouTube link.</div>
+        <a href="https://www.youtube.com/@GiantRiotous" class="dl-btn" target="_blank">▶ Watch on YouTube</a>
+      </div>
 
-    <div class="download-card">
-      <div class="card-icon">🖼</div>
-      <div class="card-name">Header Image</div>
-      <div class="card-desc">Steam store header. 460×215px. For articles and embeds.</div>
-      <a href="DROPBOX_HEADER_LINK" class="dl-btn" download>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-        Download
-      </a>
-    </div>
+      <div class="dl-card">
+        <div class="dl-card-icon">📸</div>
+        <div class="dl-card-name">Screenshots ZIP</div>
+        <div class="dl-card-desc">All 5 screenshots. 2560×1440 PNG. One zip. All chaos.</div>
+        <a href="DROPBOX_SCREENSHOTS_ZIP" class="dl-btn" download>↓ Download ZIP</a>
+      </div>
 
-    <div class="download-card">
-      <div class="card-icon">📸</div>
-      <div class="card-name">Screenshots Pack</div>
-      <div class="card-desc">All 4 screenshots in a single ZIP. 1920×1080 PNG.</div>
-      <a href="DROPBOX_SCREENSHOTS_ZIP" class="dl-btn" download>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-        Download ZIP
-      </a>
-    </div>
+      <div class="dl-card">
+        <div class="dl-card-icon">🎮</div>
+        <div class="dl-card-name">Capsule Art</div>
+        <div class="dl-card-desc">Steam capsule. 616×353px. Four plushies falling into their own disaster.</div>
+        <a href="DROPBOX_CAPSULE" class="dl-btn" download>↓ Download</a>
+      </div>
 
-    <div class="download-card">
-      <div class="card-icon">🎬</div>
-      <div class="card-name">Trailer</div>
-      <div class="card-desc">Official gameplay trailer. MP4 / external link.</div>
-      <a href="https://www.youtube.com/@GiantRiotous" class="dl-btn" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
-        YouTube ↗
-      </a>
-    </div>
+      <div class="dl-card">
+        <div class="dl-card-icon">🧸</div>
+        <div class="dl-card-name">Plushie Sprites</div>
+        <div class="dl-card-desc">Basil, Bruno, Rex, Duke. PNG with transparency. Use them everywhere.</div>
+        <a href="DROPBOX_SPRITES_ZIP" class="dl-btn" download>↓ Download ZIP</a>
+      </div>
 
-    <div class="download-card">
-      <div class="card-icon">🔤</div>
-      <div class="card-name">Logo Pack</div>
-      <div class="card-desc">Game logo and GiantRiotous studio logo. PNG with transparency.</div>
-      <a href="DROPBOX_LOGO_LINK" class="dl-btn" download>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-        Download
-      </a>
-    </div>
+      <div class="dl-card">
+        <div class="dl-card-icon">🔤</div>
+        <div class="dl-card-name">Logo Pack</div>
+        <div class="dl-card-desc">Quiet Bruise logo + GiantRiotous studio mark. PNG transparent backgrounds.</div>
+        <a href="DROPBOX_LOGOS" class="dl-btn" download>↓ Download</a>
+      </div>
 
-    <div class="download-card">
-      <div class="card-icon">📦</div>
-      <div class="card-name">Full Press Kit ZIP</div>
-      <div class="card-desc">Everything above in one archive. Screenshots, logos, capsule art.</div>
-      <a href="DROPBOX_FULL_KIT_ZIP" class="dl-btn" download>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-        Download Full Kit
-      </a>
+      <div class="dl-card">
+        <div class="dl-card-icon">📦</div>
+        <div class="dl-card-name">Full Press Kit</div>
+        <div class="dl-card-desc">Everything above in one archive. Grab it all. Write something nice.</div>
+        <a href="DROPBOX_FULL_KIT" class="dl-btn" download>↓ Download Everything</a>
+      </div>
+
     </div>
   </div>
 </section>
 
 <!-- FACT SHEET -->
-<section>
-  <div class="section-label">Fact Sheet</div>
-  <h2>Quick Facts</h2>
-
-  <table class="fact-table">
-    <tr>
-      <td>Title</td>
-      <td>Quiet Bruise</td>
-    </tr>
-    <tr>
-      <td>Developer</td>
-      <td>GiantRiotous</td>
-    </tr>
-    <tr>
-      <td>Publisher</td>
-      <td>GiantRiotous</td>
-    </tr>
-    <tr>
-      <td>Release Date</td>
-      <td>August 12, 2026</td>
-    </tr>
-    <tr>
-      <td>Platform</td>
-      <td>PC (Windows 10/11)</td>
-    </tr>
-    <tr>
-      <td>Genre</td>
-      <td>Indie · Simulation · Strategy · Roguelite · Card Game</td>
-    </tr>
-    <tr>
-      <td>Players</td>
-      <td>Single-player</td>
-    </tr>
-    <tr>
-      <td>Languages</td>
-      <td>English · Russian · Simplified Chinese · Spanish (Latin America)</td>
-    </tr>
-    <tr>
-      <td>Steam App ID</td>
-      <td>4276440</td>
-    </tr>
-    <tr>
-      <td>Steam Page</td>
-      <td><a href="https://store.steampowered.com/app/4276440/Quiet_Bruise/" target="_blank" style="color: var(--teal-bright); text-decoration: none;">store.steampowered.com/app/4276440 ↗</a></td>
-    </tr>
-  </table>
-</section>
-
-<!-- SYSTEM REQUIREMENTS -->
-<section>
-  <div class="section-label">System Requirements</div>
-  <h2>Requirements</h2>
-  <div class="sysreq-grid">
-    <div class="sysreq-block">
-      <h3>Minimum</h3>
-      <div class="sysreq-row"><span>OS</span><span>Windows 10 and above</span></div>
-      <div class="sysreq-row"><span>Processor</span><span>Intel Core i3 or Equivalent</span></div>
-      <div class="sysreq-row"><span>Memory</span><span>4 GB RAM</span></div>
-      <div class="sysreq-row"><span>Graphics</span><span>Intel UHD 620 or equivalent</span></div>
-      <div class="sysreq-row"><span>DirectX</span><span>Version 11</span></div>
-      <div class="sysreq-row"><span>Storage</span><span>1 GB available space</span></div>
-    </div>
-    <div class="sysreq-block">
-      <h3>Recommended</h3>
-      <div class="sysreq-row"><span>OS</span><span>Windows 11</span></div>
-      <div class="sysreq-row"><span>Processor</span><span>Intel Core i5 or equivalent</span></div>
-      <div class="sysreq-row"><span>Memory</span><span>8 GB RAM</span></div>
-      <div class="sysreq-row"><span>Graphics</span><span>NVIDIA GTX 1050 or equivalent</span></div>
-      <div class="sysreq-row"><span>DirectX</span><span>Version 11</span></div>
-      <div class="sysreq-row"><span>Storage</span><span>1 GB available space</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- SOCIAL -->
-<section>
-  <div class="section-label">Links</div>
-  <h2>Find Us</h2>
-  <div class="social-row">
-    <a href="https://store.steampowered.com/app/4276440/Quiet_Bruise/" class="social-link" target="_blank">🎮 Steam Page</a>
-    <a href="https://discord.gg/2UxuW2NvMT" class="social-link" target="_blank">💬 Discord</a>
-    <a href="https://www.youtube.com/@GiantRiotous" class="social-link" target="_blank">▶ YouTube</a>
-    <a href="https://www.instagram.com/giantriotous/" class="social-link" target="_blank">📷 Instagram</a>
-    <a href="https://bsky.app/profile/giantriotous.bsky.social" class="social-link" target="_blank">🦋 Bluesky</a>
+<section class="facts-section">
+  <div class="section-heading">the facts.</div>
+  <div class="facts-inner paper">
+    <table class="fact-table">
+      <tr><td>Title</td><td>Quiet Bruise</td></tr>
+      <tr><td>Developer</td><td>GiantRiotous</td></tr>
+      <tr><td>Publisher</td><td>GiantRiotous</td></tr>
+      <tr><td>Release Date</td><td>August 12, 2026</td></tr>
+      <tr><td>Demo</td><td>Steam Next Fest — June 15, 2026</td></tr>
+      <tr><td>Platform</td><td>PC (Windows 10/11)</td></tr>
+      <tr><td>Price</td><td>$10 USD</td></tr>
+      <tr><td>Genre</td><td>Chaotic Factory Survival · Roguelite · 2D</td></tr>
+      <tr><td>Players</td><td>Single-player</td></tr>
+      <tr><td>Run Length</td><td>~7 minutes per run</td></tr>
+      <tr><td>Steam App ID</td><td>4276440</td></tr>
+      <tr><td>Steam Page</td><td><a href="https://store.steampowered.com/app/4276440/Quiet_Bruise/" target="_blank">store.steampowered.com/app/4276440 ↗</a></td></tr>
+      <tr><td>Press Contact</td><td><a href="mailto:giantriotous@gmail.com">giantriotous@gmail.com</a></td></tr>
+    </table>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section>
-  <div class="section-label">Contact</div>
-  <div class="contact-block">
-    <div>
-      <h3>Press Inquiries</h3>
-      <p>For review keys, interviews, or coverage questions — reach out directly. We respond fast.</p>
+<section class="contact-section">
+  <div class="contact-inner">
+    <div class="section-heading">say something.</div>
+    <p class="contact-sub">Review keys, interviews, coverage questions — we respond fast. Promise.</p>
+    <a href="mailto:giantriotous@gmail.com" class="contact-email">giantriotous@gmail.com ↗</a>
+    <div class="social-row">
+      <a href="https://store.steampowered.com/app/4276440/Quiet_Bruise/" class="social-link" target="_blank">🎮 Steam</a>
+      <a href="https://discord.gg/2UxuW2NvMT" class="social-link" target="_blank">💬 Discord</a>
+      <a href="https://www.youtube.com/@GiantRiotous" class="social-link" target="_blank">▶ YouTube</a>
+      <a href="https://www.instagram.com/giantriotous/" class="social-link" target="_blank">📷 Instagram</a>
+      <a href="https://bsky.app/profile/giantriotous.bsky.social" class="social-link" target="_blank">🦋 Bluesky</a>
     </div>
-    <a href="mailto:PRESS_EMAIL_HERE" class="contact-email">PRESS_EMAIL_HERE ↗</a>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <span>© 2026 GiantRiotous · All assets free to use for press coverage</span>
-  <a href="https://store.steampowered.com/app/4276440/Quiet_Bruise/" target="_blank" class="steam-btn">
-    Wishlist on Steam ↗
+  <span>© 2026 GiantRiotous · All press assets free to use for coverage</span>
+  <a href="https://store.steampowered.com/app/4276440/Quiet_Bruise/" target="_blank" class="wishlist-btn">
+    🧸 Wishlist on Steam ↗
   </a>
 </footer>
+
+<script>
+// Plushie wobble on hover — extra chaos
+document.querySelectorAll('.plushie-card').forEach(card => {
+  card.addEventListener('mouseenter', () => {
+    card.style.animationPlayState = 'paused';
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.animationPlayState = 'running';
+  });
+});
+
+// Easter egg — stress 10 clicks anywhere = egg appears
+let clickCount = 0;
+document.addEventListener('click', (e) => {
+  clickCount++;
+  if (clickCount % 10 === 0) {
+    const egg = document.createElement('div');
+    egg.style.cssText = `position:fixed;font-size:40px;left:${e.clientX - 20}px;top:${e.clientY - 40}px;pointer-events:none;z-index:9999;animation:eggPop 1.5s ease forwards;`;
+    egg.textContent = '🥚';
+    document.body.appendChild(egg);
+    
+    const style = document.createElement('style');
+    style.textContent = '@keyframes eggPop{0%{opacity:1;transform:scale(0) rotate(0)}30%{opacity:1;transform:scale(1.3) rotate(-10deg)}60%{opacity:1;transform:scale(1) rotate(5deg)}100%{opacity:0;transform:scale(0.8) translateY(-60px) rotate(-20deg)}}';
+    document.head.appendChild(style);
+    
+    setTimeout(() => egg.remove(), 1500);
+  }
+});
+</script>
 
 </body>
 </html>
