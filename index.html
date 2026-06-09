@@ -205,14 +205,6 @@ header {
   75% { transform: rotate(2deg) translateY(-5px); }
 }
 
-.plushie-emoji {
-  font-size: 72px;
-  display: block;
-  line-height: 1;
-  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
-}
-
-/* Replace emoji with actual sprite */
 .plushie-img {
   width: 100px;
   height: 100px;
@@ -368,6 +360,11 @@ header {
   margin-top: 8px;
 }
 
+/* 6th screenshot spans full width */
+.screenshots-grid .screenshot-item:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
 .screenshot-item {
   position: relative;
   overflow: hidden;
@@ -434,6 +431,25 @@ header {
 }
 
 .dl-small:hover { background: var(--cream); }
+
+/* ── TRAILER EMBED ── */
+.trailer-embed {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border: 3px solid var(--ink);
+  margin-bottom: 32px;
+}
+
+.trailer-embed iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
 
 /* ── DOWNLOADS ── */
 .downloads-section {
@@ -704,31 +720,9 @@ footer span {
 .plushie-card:nth-child(2) { animation: fadeUp 0.5s ease 0.2s both; }
 .plushie-card:nth-child(3) { animation: fadeUp 0.5s ease 0.3s both; }
 .plushie-card:nth-child(4) { animation: fadeUp 0.5s ease 0.4s both; }
-
-/* ── STRESS EGG EASTER EGG ── */
-.easter-egg {
-  position: fixed;
-  font-size: 32px;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.3s;
-  z-index: 999;
-}
-
 </style>
 </head>
 <body>
-
-<!-- HERO GIF -->
-<div style="display:flex;justify-content:center;padding:40px 40px 0;background:var(--grass);">
-  <div style="position:relative;border:4px solid var(--ink);max-width:616px;width:100%;">
-    <img src="https://raw.githubusercontent.com/PrabhbirJ/QuietBruise_PK/main/press_kit_assets/output_002.gif" alt="Quiet Bruise — chaos in action" style="width:100%;display:block;" />
-    <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.7);padding:8px 14px;display:flex;justify-content:space-between;align-items:center;">
-      <span style="font-size:11px;color:rgba(255,255,255,0.6);letter-spacing:0.05em;">this is fine.</span>
-      <a href="https://www.dropbox.com/scl/fi/z0oasngk1ehzx14y3p03u/output_002.gif?rlkey=bfnzjwct7m2f9bhjduztfxnvb&st=jy49l6eq&dl=1" download style="background:var(--orange);color:var(--ink);font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:5px 12px;text-decoration:none;">↓ Download GIF</a>
-    </div>
-  </div>
-</div>
 
 <!-- HEADER -->
 <header>
@@ -745,7 +739,7 @@ footer span {
       <div class="meta-pill"><span>Platform</span>PC (Windows)</div>
       <div class="meta-pill"><span>Release</span>Aug 12, 2026</div>
       <div class="meta-pill"><span>Genre</span>Chaotic Factory Survival</div>
-      <div class="meta-pill"><span>Price</span>$10</div>
+      <div class="meta-pill"><span>Price</span>$6</div>
     </div>
   </div>
 </header>
@@ -758,8 +752,7 @@ footer span {
     <!-- BASIL -->
     <div class="plushie-card paper">
       <div class="plushie-sprite">
-        <!-- Replace src with real sprite URL after uploading -->
-      <img src="https://raw.githubusercontent.com/PrabhbirJ/QuietBruise_PK/main/press_kit_assets/Basil.png" class="plushie-img" alt="Basil">
+        <img src="https://raw.githubusercontent.com/PrabhbirJ/QuietBruise_PK/main/press_kit_assets/Basil.png" class="plushie-img" alt="Basil">
       </div>
       <div class="plushie-name">Basil</div>
       <div class="plushie-role">The Healer (allegedly)</div>
@@ -865,16 +858,16 @@ footer span {
 <section class="screenshots-section">
   <div class="section-heading">screenshots.</div>
   <div class="screenshots-inner paper">
-    <!-- TRAILER -->
+
+    <!-- TRAILER EMBED -->
     <div class="section-label">Trailer</div>
-    <div style="margin-bottom:32px;">
-      <a href="https://www.dropbox.com/scl/fi/isoltlceewvmdv6jvbigb/Trailer.mp4?rlkey=vu9t8bhb6qn3vc90d6adbohwm&st=og3efc6l&dl=1" target="_blank" style="display:flex;align-items:center;gap:16px;background:var(--ink);color:var(--cream);padding:20px 24px;text-decoration:none;max-width:400px;transition:background 0.2s;" onmouseover="this.style.background='#ff6b35'" onmouseout="this.style.background='#2c1a0e'">
-        <span style="font-size:28px;">▶</span>
-        <div>
-          <div style="font-family:'Lilita One',cursive;font-size:18px;">Watch Trailer</div>
-          <div style="font-size:11px;opacity:0.6;letter-spacing:0.05em;">YouTube — Official Gameplay Trailer</div>
-        </div>
-      </a>
+    <div class="trailer-embed" style="margin-bottom:32px;">
+      <iframe
+        src="https://www.youtube.com/embed/xMdgoNGUazM"
+        title="Quiet Bruise — Official Gameplay Trailer"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
     </div>
 
     <!-- GIFS -->
@@ -882,34 +875,34 @@ footer span {
     <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:40px;">
 
       <div class="screenshot-item">
-        <img src="https://raw.githubusercontent.com/PrabhbirJ/QuietBruise_PK/main/press_kit_assets/output.gif" alt="GIF 01" loading="lazy" style="width:100%;display:block;">
+        <img src="https://raw.githubusercontent.com/PrabhbirJ/QuietBruise_PK/main/press_kit_assets/mov1.gif" alt="GIF 01" loading="lazy" style="width:100%;display:block;">
         <div class="screenshot-overlay">
           <span class="screenshot-label">GIF 01 · 616px</span>
-          <a href="https://www.dropbox.com/scl/fi/u5yih1cxbgox8gb0o9sds/output.gif?rlkey=yo2j41116r597rkvasfojnkdj&st=prozurk2&dl=1" class="dl-small" download>↓ GIF</a>
+          <a href="https://www.dropbox.com/scl/fi/f2f3hw3mdk73r4ep2ia58/mov1.gif?rlkey=t2v2d3w5div6i7bo0lfr23o18&st=8dlrrqps&dl=1" class="dl-small" download>↓ GIF</a>
         </div>
       </div>
 
       <div class="screenshot-item">
-        <img src="https://raw.githubusercontent.com/PrabhbirJ/QuietBruise_PK/main/press_kit_assets/output_003.gif" alt="GIF 02" loading="lazy" style="width:100%;display:block;">
+        <img src="https://raw.githubusercontent.com/PrabhbirJ/QuietBruise_PK/main/press_kit_assets/mov2.gif" alt="GIF 02" loading="lazy" style="width:100%;display:block;">
         <div class="screenshot-overlay">
           <span class="screenshot-label">GIF 02 · 616px</span>
-          <a href="https://www.dropbox.com/scl/fi/ybzrn0opirhnp9dxp6etd/output_003.gif?rlkey=qdmebc5kzd04or5gweidz0olr&st=pw38xtiv&dl=1" class="dl-small" download>↓ GIF</a>
+          <a href="https://www.dropbox.com/scl/fi/dyum21fdofrltwks5f7qd/mov2.gif?rlkey=gpx643li147xwote1d5ewodyi&st=7yerph11&dl=1" class="dl-small" download>↓ GIF</a>
         </div>
       </div>
 
       <div class="screenshot-item">
-        <img src="https://raw.githubusercontent.com/PrabhbirJ/QuietBruise_PK/main/press_kit_assets/output_004.gif" alt="GIF 03" loading="lazy" style="width:100%;display:block;">
+        <img src="https://raw.githubusercontent.com/PrabhbirJ/QuietBruise_PK/main/press_kit_assets/mov3.gif" alt="GIF 03" loading="lazy" style="width:100%;display:block;">
         <div class="screenshot-overlay">
           <span class="screenshot-label">GIF 03 · 616px</span>
-          <a href="https://www.dropbox.com/scl/fi/k2093xnjzi5s4gqcy2pcz/output_004.gif?rlkey=x8o8ec2ttxnlirutlzfhpn5la&st=eldrhrek&dl=1" class="dl-small" download>↓ GIF</a>
+          <a href="https://www.dropbox.com/scl/fi/3hhjrplbkpfwljhuw4l98/mov3.gif?rlkey=bjfla8e02zk9uf5k6rbdtwav5&st=3gbt3jk1&dl=1" class="dl-small" download>↓ GIF</a>
         </div>
       </div>
 
       <div class="screenshot-item">
-        <img src="https://raw.githubusercontent.com/PrabhbirJ/QuietBruise_PK/main/press_kit_assets/output_005.gif" alt="GIF 04" loading="lazy" style="width:100%;display:block;">
+        <img src="https://raw.githubusercontent.com/PrabhbirJ/QuietBruise_PK/main/press_kit_assets/mov4.gif" alt="GIF 04" loading="lazy" style="width:100%;display:block;">
         <div class="screenshot-overlay">
           <span class="screenshot-label">GIF 04 · 616px</span>
-          <a href="https://www.dropbox.com/scl/fi/0lrft4c2u3c47s3tq9nqc/output_005.gif?rlkey=b6kk0pvriob458ko2gmc9nxxo&st=vcccnt1k&dl=1" class="dl-small" download>↓ GIF</a>
+          <a href="https://www.dropbox.com/scl/fi/9xv76343wtjs3wsih7v8j/mov4.gif?rlkey=gf1llw5rykgyxxcn40j5ftrob&st=2ucuq7lv&dl=1" class="dl-small" download>↓ GIF</a>
         </div>
       </div>
 
@@ -920,42 +913,50 @@ footer span {
     <div class="screenshots-grid">
 
       <div class="screenshot-item">
-        <img src="https://raw.githubusercontent.com/PrabhbirJ/QuietBruise_PK/main/press_kit_assets/Image%20Sequence_015_0001.jpg" alt="Screenshot 01" loading="lazy">
+        <img src="https://raw.githubusercontent.com/PrabhbirJ/QuietBruise_PK/main/press_kit_assets/Image%20Sequence_005_0001.jpg" alt="Screenshot 01" loading="lazy">
         <div class="screenshot-overlay">
           <span class="screenshot-label">Screenshot 01 · 2560×1440</span>
-          <a href="https://www.dropbox.com/scl/fi/dn1s2bqv5y6gpg7ogkprr/Image-Sequence_015_0001.jpg?rlkey=q3qujo1umkxwpdeqrzkpk6z6a&st=sax37hfi&dl=1" class="dl-small" download>↓ PNG</a>
+          <a href="https://www.dropbox.com/scl/fi/pf586cvguyxb02p6lb8i7/Image-Sequence_005_0001.jpg?rlkey=ga58inkm5bdvx94z627ycfonn&st=idg3yivu&dl=1" class="dl-small" download>↓ PNG</a>
         </div>
       </div>
 
       <div class="screenshot-item">
-        <img src="https://raw.githubusercontent.com/PrabhbirJ/QuietBruise_PK/main/press_kit_assets/Image%20Sequence_017_0001.jpg" alt="Screenshot 02" loading="lazy">
+        <img src="https://raw.githubusercontent.com/PrabhbirJ/QuietBruise_PK/main/press_kit_assets/Image%20Sequence_006_0001.jpg" alt="Screenshot 02" loading="lazy">
         <div class="screenshot-overlay">
           <span class="screenshot-label">Screenshot 02 · 2560×1440</span>
-          <a href="https://www.dropbox.com/scl/fi/4usi8c4ypxylnujidq5oj/Image-Sequence_017_0001.jpg?rlkey=mz5xglfzua6dk15k52m4p1l4u&st=ujhnplkj&dl=1" class="dl-small" download>↓ PNG</a>
+          <a href="https://www.dropbox.com/scl/fi/gawbbuejvsgmlzw34pxk0/Image-Sequence_006_0001.jpg?rlkey=twkxtdb3pzqn2dilth4p2y4r9&st=hj79hkg2&dl=1" class="dl-small" download>↓ PNG</a>
         </div>
       </div>
 
       <div class="screenshot-item">
-        <img src="https://raw.githubusercontent.com/PrabhbirJ/QuietBruise_PK/main/press_kit_assets/Image%20Sequence_021_0001.jpg" alt="Screenshot 03" loading="lazy">
+        <img src="https://raw.githubusercontent.com/PrabhbirJ/QuietBruise_PK/main/press_kit_assets/Image%20Sequence_008_0001.jpg" alt="Screenshot 03" loading="lazy">
         <div class="screenshot-overlay">
           <span class="screenshot-label">Screenshot 03 · 2560×1440</span>
-          <a href="https://www.dropbox.com/scl/fi/86uudt7ickpqxo31lmaf7/Image-Sequence_021_0001.jpg?rlkey=5labd9f4d6t1dur6ymsqsy49v&st=qta6gval&dl=1" class="dl-small" download>↓ PNG</a>
+          <a href="https://www.dropbox.com/scl/fi/drn05vb8dchqn07dl4ie4/Image-Sequence_008_0001.jpg?rlkey=6sbdyemi4jg0gvwskqh2vtrdd&st=6pgxi2iy&dl=1" class="dl-small" download>↓ PNG</a>
         </div>
       </div>
 
       <div class="screenshot-item">
-        <img src="https://raw.githubusercontent.com/PrabhbirJ/QuietBruise_PK/main/press_kit_assets/Image%20Sequence_023_0001.jpg" alt="Screenshot 04" loading="lazy">
+        <img src="https://raw.githubusercontent.com/PrabhbirJ/QuietBruise_PK/main/press_kit_assets/Image%20Sequence_009_0001.jpg" alt="Screenshot 04" loading="lazy">
         <div class="screenshot-overlay">
           <span class="screenshot-label">Screenshot 04 · 2560×1440</span>
-          <a href="https://www.dropbox.com/scl/fi/kgzofqk7z2mvkw41p0n95/Image-Sequence_023_0001.jpg?rlkey=mefjft2cesspcqntiymf6pjuy&st=6m3qlvo5&dl=1" class="dl-small" download>↓ PNG</a>
+          <a href="https://www.dropbox.com/scl/fi/u5zwwzuyn4l8yj5ew3zh2/Image-Sequence_009_0001.jpg?rlkey=fb7oz9ztly3f5asl9g6jzij8q&st=i5icz7uj&dl=1" class="dl-small" download>↓ PNG</a>
         </div>
       </div>
 
       <div class="screenshot-item">
-        <img src="https://raw.githubusercontent.com/PrabhbirJ/QuietBruise_PK/main/press_kit_assets/Image%20Sequence_026_0001.jpg" alt="Screenshot 05" loading="lazy">
+        <img src="https://raw.githubusercontent.com/PrabhbirJ/QuietBruise_PK/main/press_kit_assets/Image%20Sequence_011_0001.jpg" alt="Screenshot 05" loading="lazy">
         <div class="screenshot-overlay">
           <span class="screenshot-label">Screenshot 05 · 2560×1440</span>
-          <a href="https://www.dropbox.com/scl/fi/h6jzl2f8u7x3iohs55pbe/Image-Sequence_026_0001.jpg?rlkey=yv5aw1gl4rpj5b15j6ioxji1v&st=kyg46miw&dl=1" class="dl-small" download>↓ PNG</a>
+          <a href="https://www.dropbox.com/scl/fi/9nxn3qrgde392a1kfxtj9/Image-Sequence_011_0001.jpg?rlkey=v5a5m22nwxuxw932zm7kkb87d&st=zp45swos&dl=1" class="dl-small" download>↓ PNG</a>
+        </div>
+      </div>
+
+      <div class="screenshot-item">
+        <img src="https://raw.githubusercontent.com/PrabhbirJ/QuietBruise_PK/main/press_kit_assets/Image%20Sequence_013_0001.jpg" alt="Screenshot 06" loading="lazy">
+        <div class="screenshot-overlay">
+          <span class="screenshot-label">Screenshot 06 · 2560×1440</span>
+          <a href="https://www.dropbox.com/scl/fi/zcs1fcnc2fc1rga361dxu/Image-Sequence_013_0001.jpg?rlkey=a33qqt5jm9rs4lirjqox8ww3e&st=cnxohrr2&dl=1" class="dl-small" download>↓ PNG</a>
         </div>
       </div>
 
@@ -973,14 +974,21 @@ footer span {
       <div class="dl-card">
         <div class="dl-card-icon">🎬</div>
         <div class="dl-card-name">Trailer</div>
-        <div class="dl-card-desc">Official gameplay trailer. 30 seconds of things going very wrong. YouTube link.</div>
-        <a href="https://youtu.be/KV4g-kpv-og?si=HxmK0UrHQRKjMGUA" class="dl-btn" target="_blank">▶ Watch on YouTube</a>
+        <div class="dl-card-desc">Official gameplay trailer. 30 seconds of things going very wrong. YouTube + direct download.</div>
+        <a href="https://youtu.be/xMdgoNGUazM?si=kf2P5HEzLVML36cG" class="dl-btn" target="_blank">▶ Watch on YouTube</a>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card-icon">📥</div>
+        <div class="dl-card-name">Trailer (MP4)</div>
+        <div class="dl-card-desc">Download the raw trailer file directly for articles and embeds.</div>
+        <a href="https://www.dropbox.com/scl/fi/ydgf3xfxboi0c4mwpqh14/Timeline-1.mp4?rlkey=xq1guuk33bfsxwubxew17ycc5&st=d68v4yhh&dl=1" class="dl-btn" download>↓ Download MP4</a>
       </div>
 
       <div class="dl-card">
         <div class="dl-card-icon">📸</div>
         <div class="dl-card-name">Screenshots ZIP</div>
-        <div class="dl-card-desc">All 5 screenshots. 2560×1440 PNG. One zip. All chaos.</div>
+        <div class="dl-card-desc">All 6 screenshots. 2560×1440. One zip. All chaos.</div>
         <a href="https://www.dropbox.com/scl/fi/7veod3koo8ixxll7enehi/Screenshots.zip?rlkey=ryhbh36xb15phtnnqshu8toqd&st=7lf8nc8o&dl=1" class="dl-btn" download>↓ Download ZIP</a>
       </div>
 
@@ -1027,7 +1035,7 @@ footer span {
       <tr><td>Release Date</td><td>August 12, 2026</td></tr>
       <tr><td>Demo</td><td>June 8, 2026</td></tr>
       <tr><td>Platform</td><td>PC (Windows 10/11)</td></tr>
-      <tr><td>Price</td><td>$10 USD</td></tr>
+      <tr><td>Price</td><td>$6 USD</td></tr>
       <tr><td>Genre</td><td>Chaotic Factory Survival · Roguelite · 2D</td></tr>
       <tr><td>Players</td><td>Single-player</td></tr>
       <tr><td>Steam App ID</td><td>4276440</td></tr>
@@ -1046,7 +1054,7 @@ footer span {
     <div class="social-row">
       <a href="https://store.steampowered.com/app/4276440/Quiet_Bruise/" class="social-link" target="_blank">🎮 Steam</a>
       <a href="https://discord.gg/2UxuW2NvMT" class="social-link" target="_blank">💬 Discord</a>
-      <a href="https://youtu.be/KV4g-kpv-og?si=HxmK0UrHQRKjMGUA" class="social-link" target="_blank">▶ YouTube</a>
+      <a href="https://youtu.be/xMdgoNGUazM?si=kf2P5HEzLVML36cG" class="social-link" target="_blank">▶ YouTube</a>
       <a href="https://www.instagram.com/giantriotous/" class="social-link" target="_blank">📷 Instagram</a>
       <a href="https://bsky.app/profile/giantriotous.bsky.social" class="social-link" target="_blank">🦋 Bluesky</a>
     </div>
